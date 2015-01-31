@@ -30,6 +30,11 @@ public class Location implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return "Location{" + "coordinates=" + coordinates + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 41 * hash + Objects.hashCode(this.coordinates);
