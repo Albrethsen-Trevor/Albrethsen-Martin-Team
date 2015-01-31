@@ -5,6 +5,7 @@
  */
 package slayerofdragons;
 
+import byui.cit260.slayerOfDragons.model.Location;
 import byui.cit260.slayerOfDragons.model.Player;
 
 
@@ -26,6 +27,14 @@ public class SlayerOfDragons {
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        Location locationOne = new Location();
+        
+        locationOne.setCoordinates("Mountain");
+        String locationInfo = locationOne.toString();
+        System.out.println(locationInfo);
+        
+        
     }
     
 }
