@@ -5,39 +5,36 @@
  */
 package byui.cit260.slayerOfDragons.view;
 
-import byui.cit260.slayerOfDragons.control.GameControl;
 import java.util.Scanner;
-import slayerofdragons.SlayerOfDragons;
 
 /**
  *
  * @author trevoralbrethsen
  */
-public class MainMenuView {
+public class StartExistingGameView {
     
-    private final String MENU = "\n"
+    private final String STARTEXISTINGGAMEMENU = "\n"
             + "\n--------------------------------------------"
-            + "\n| Main Menu                                |"
+            + "\n| Start Existing Game Menu                 |"
             + "\n--------------------------------------------"
-            + "\nN - Start game"
-            + "\nG - Get and start saved game"
-            + "\nH - Get help on how to play the game"
-            + "\nS - Save game"
-            + "\nE - Exit"
+            + "\nL - Load existing save file"
+            + "\nD - Delete existing save file"
+            + "\nC - Copy existing save file"
+            + "\nQ - Quit"
             + "\n--------------------------------------------";
-
-    public void displayMenu() {
+    
+    public void displayStartExistingGameMenu() {
         
         char selection = ' ';
         do {
-            System.out.println(MENU); // display the main menu
+            System.out.println(STARTEXISTINGGAMEMENU); // display the main menu
             
             String input = this.getInput(); // get the user's selection
             selection = input.charAt(0); // get first character of string
             
             this.doAction(selection); // do action based on selection
         
-        } while (selection != 'E'); // a selection is not "Exit"
+        } while (selection != 'Q'); // a selection is not "Quit"
     }
 
     public String getInput() {
@@ -62,26 +59,23 @@ public class MainMenuView {
             }
             break; // out of the (exit) the repetition
         }
-        
+    
         return input; // return the input
     }
-
+    
     public void doAction(char choice) {
         
         switch (choice) {
-            case 'N': // create and start a new game
-                this.startNewGame();
+            case 'L': // Loads a save file
+                this.loadSave();
                 break;
-            case 'G': // get and start an existing game
-                this.startExistingGame();
+            case 'D': // Delete a save file
+                this.deleteExistingSave();
                 break;
-            case 'H': // display the help menu
-                this.displayHelpMenu();
+            case 'C': // Copy a save file
+                this.copySaveFile();
                 break;
-            case 'S': // save the current game
-                this.saveGame();
-                break;
-            case 'E': // Exit the game
+            case 'Q': // Quit the help menu
                 return;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -89,34 +83,17 @@ public class MainMenuView {
         }
     }
 
-    private void startNewGame() {
-                // create a new game
-        GameControl.createNewGame(SlayerOfDragons.getPlayer);
-        
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+    private void loadSave() {
+        System.out.println("*** loadSave function called ***");
     }
 
-    private void startExistingGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        StartExistingGameView startExistingGameMenu = new StartExistingGameView();
-        startExistingGameMenu.displayStartExistingGameMenu();
+    private void deleteExistingSave() {
+        System.out.println("*** deleteExistingSave function called ***");
     }
 
-    private void saveGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        ContainerControlView startContainerControlView = new ContainerControlView();
-        startContainerControlView.displayContainerControl();
+    private void copySaveFile() {
+        System.out.println("*** copySaveFile function called ***");
     }
-
-    private void displayHelpMenu() {
-        // System.out.println("*** displayHelpMenu function called ***");
-                
-                // access help menu
-        // HelpMenuView 
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenu();
-    }
+    
     
 }

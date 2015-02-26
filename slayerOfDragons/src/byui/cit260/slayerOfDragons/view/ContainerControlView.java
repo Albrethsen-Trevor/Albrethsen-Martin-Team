@@ -5,44 +5,40 @@
  */
 package byui.cit260.slayerOfDragons.view;
 
-import byui.cit260.slayerOfDragons.control.GameControl;
+import byui.cit260.slayerOfDragons.model.Container;
 import java.util.Scanner;
-import slayerofdragons.SlayerOfDragons;
 
 /**
  *
  * @author trevoralbrethsen
  */
-public class MainMenuView {
+public class ContainerControlView {
     
-    private final String MENU = "\n"
+    private final String CONTAINERCONTROL = "\n"
             + "\n--------------------------------------------"
-            + "\n| Main Menu                                |"
+            + "\n| Container Control View                   |"
             + "\n--------------------------------------------"
-            + "\nN - Start game"
-            + "\nG - Get and start saved game"
-            + "\nH - Get help on how to play the game"
-            + "\nS - Save game"
-            + "\nE - Exit"
+            + "\n Enter the height of the container"
             + "\n--------------------------------------------";
 
-    public void displayMenu() {
+    public void displayContainerControl() {
         
         char selection = ' ';
         do {
-            System.out.println(MENU); // display the main menu
+            System.out.println(CONTAINERCONTROL); // display the main menu
             
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first character of string
+            int input = this.enterDimensions(); // get the user's selection
+            // selection = input.charAt(0); // get first character of string
             
             this.doAction(selection); // do action based on selection
         
         } while (selection != 'E'); // a selection is not "Exit"
     }
-
-    public String getInput() {
+    
+    public int enterDimensions() {
+        int height = Container.getHeight();
         boolean valid = false; // indicates if the input has been retrieved
-        String input = null;
+        int input = null;
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
         while(!valid) { // while a valid name has not been retrieved
@@ -55,17 +51,31 @@ public class MainMenuView {
             input = input.trim();
             
             // if the input is invalid (less than one character in length))
-            if (input.length() < 1) {
+            if (height > 0 && height < 24 && length > 0 && length < 24 && width > 0 && width < 24) {
+    
+                calcVolumeOfItemContainer(height, width, length);
+                }
+                {
                 System.out.println("Invalid input - the input must not be blank");
                 continue; // and repeat again
                 
             }
+            //boolean valid = false;
+                while (!valid) {
+                int time;
+                try {
+                if (time >= 0) valid = true;
+                } catch (NumberFormatException e) {
+                //error
+                System.out.println("Error, not a number. Please try again.");
+    }
+}
             break; // out of the (exit) the repetition
         }
         
         return input; // return the input
     }
-
+    
     public void doAction(char choice) {
         
         switch (choice) {
@@ -88,35 +98,30 @@ public class MainMenuView {
                 break;
         }
     }
-
-    private void startNewGame() {
-                // create a new game
-        GameControl.createNewGame(SlayerOfDragons.getPlayer);
+    
+    public double calcVolumeOfItemContainer(double height, double width, double length) {
         
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
+        if (height < 0 || height > 24) { //Is the height negative?
+            return -1;
+        }
 
-    private void startExistingGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        StartExistingGameView startExistingGameMenu = new StartExistingGameView();
-        startExistingGameMenu.displayStartExistingGameMenu();
-    }
+        if (width < 0 || width > 24) { //Width is negative?
+            return -1;
+        }
 
-    private void saveGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        ContainerControlView startContainerControlView = new ContainerControlView();
-        startContainerControlView.displayContainerControl();
-    }
+        if (length < 0 || length > 24) { //Length too high?
+            return -1;
+        }
 
-    private void displayHelpMenu() {
-        // System.out.println("*** displayHelpMenu function called ***");
-                
-                // access help menu
-        // HelpMenuView 
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenu();
+        double volume = (height * width * length) / 1728;
+
+        return volume;
+        
     }
     
+}
+
+if (height > 0 && height < 24 && length > 0 && length < 24 && width > 0 && width < 24) {
+    
+calcVolumeOfItemContainer(height, width, length);
 }
