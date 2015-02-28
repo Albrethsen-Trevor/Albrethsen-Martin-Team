@@ -5,6 +5,7 @@
  */
 package byui.cit260.slayerOfDragons.view;
 
+import byui.cit260.slayerOfDragons.control.InventoryControl;
 import byui.cit260.slayerOfDragons.model.Container;
 import java.util.Scanner;
 
@@ -23,22 +24,37 @@ public class ContainerControlView {
 
     public void displayContainerControl() {
         
-        char selection = ' ';
+        double volume = -1;
         do {
             System.out.println(CONTAINERCONTROL); // display the main menu
             
-            int input = this.enterDimensions(); // get the user's selection
-            // selection = input.charAt(0); // get first character of string
+            // get the width from the end user
+            System.out.println("Enter the width of the container below:");
+            String widthValue = this.getInput();
             
-            this.doAction(selection); // do action based on selection
+            
+            // get the height from the end user
+            System.out.println("Enter the height of the container below:");
+            String heightValue = this.getInput();
+            
+            // get the length from the end user
+            System.out.println("Enter the length of the container below:");
+            String lengthValue = this.getInput();
+            
+            double width = Double.parseDouble(widthValue);
+            double height = Double.parseDouble(heightValue);
+            double length = Double.parseDouble(lengthValue);
+            // call doAction to perform the task and display the next view
+            volume = this.doAction(width, height, length);
+            
+            
         
-        } while (selection != 'E'); // a selection is not "Exit"
+        } while (volume < 0); // a selection is not "Exit"
     }
     
-    public int enterDimensions() {
-        int height = Container.getHeight();
+    public String getInput() {
         boolean valid = false; // indicates if the input has been retrieved
-        int input = null;
+        String input = null;
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
         while(!valid) { // while a valid name has not been retrieved
@@ -51,77 +67,43 @@ public class ContainerControlView {
             input = input.trim();
             
             // if the input is invalid (less than one character in length))
-            if (height > 0 && height < 24 && length > 0 && length < 24 && width > 0 && width < 24) {
-    
-                calcVolumeOfItemContainer(height, width, length);
-                }
-                {
+            if (input.length() < 1) {
                 System.out.println("Invalid input - the input must not be blank");
                 continue; // and repeat again
                 
             }
-            //boolean valid = false;
-                while (!valid) {
-                int time;
-                try {
-                if (time >= 0) valid = true;
-                } catch (NumberFormatException e) {
-                //error
-                System.out.println("Error, not a number. Please try again.");
-    }
-}
             break; // out of the (exit) the repetition
         }
         
         return input; // return the input
     }
     
-    public void doAction(char choice) {
+    public double doAction(double width, double height, double length) {
         
-        switch (choice) {
-            case 'N': // create and start a new game
-                this.startNewGame();
-                break;
-            case 'G': // get and start an existing game
-                this.startExistingGame();
-                break;
-            case 'H': // display the help menu
-                this.displayHelpMenu();
-                break;
-            case 'S': // save the current game
-                this.saveGame();
-                break;
-            case 'E': // Exit the game
-                return;
-            default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                break;
+        // call control function to calculate the volume
+        double volume = InventoryControl.calcVolumeOfItemContainer(height, width, length);
+        // if the volume is valid
+        if (volume >= 0) {
+            System.out.println("The volume is:" + volume);
         }
-    }
-    
-    public double calcVolumeOfItemContainer(double height, double width, double length) {
-        
-        if (height < 0 || height > 24) { //Is the height negative?
-            return -1;
+            // display success message - the volume is ....
+        // else
+        else {
+            // if width is invalid, print invalid width
+            if (volume == -2) {
+                System.out.println("Invalid width. Width must be between 0 and 24.");
+            }
+            // else if height is invalid, print invalid height
+            else if (volume == -1) {
+                System.out.println("Invalid height. Height must be between 0 and 24.");
+            }
+            // else if length is invalid, print invalid length
+            else {
+                System.out.println("Invalid length. Length must be between 0 and 24.");
+            }
+          
         }
-
-        if (width < 0 || width > 24) { //Width is negative?
-            return -1;
-        }
-
-        if (length < 0 || length > 24) { //Length too high?
-            return -1;
-        }
-
-        double volume = (height * width * length) / 1728;
-
         return volume;
-        
     }
     
-}
-
-if (height > 0 && height < 24 && length > 0 && length < 24 && width > 0 && width < 24) {
-    
-calcVolumeOfItemContainer(height, width, length);
 }

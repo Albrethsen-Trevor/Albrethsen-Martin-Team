@@ -24,6 +24,7 @@ public class MainMenuView {
             + "\nH - Get help on how to play the game"
             + "\nS - Save game"
             + "\nE - Exit"
+            + "\nC - ContainerControlView"
             + "\n--------------------------------------------";
 
     public void displayMenu() {
@@ -81,6 +82,9 @@ public class MainMenuView {
             case 'S': // save the current game
                 this.saveGame();
                 break;
+            case 'C': // Access ContainerControlView
+                this.accessContainer();
+                break;
             case 'E': // Exit the game
                 return;
             default:
@@ -105,9 +109,8 @@ public class MainMenuView {
     }
 
     private void saveGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        ContainerControlView startContainerControlView = new ContainerControlView();
-        startContainerControlView.displayContainerControl();
+        System.out.println("*** startExistingGame function called ***");
+        
     }
 
     private void displayHelpMenu() {
@@ -117,6 +120,11 @@ public class MainMenuView {
         // HelpMenuView 
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayHelpMenu();
+    }
+
+    private void accessContainer() {
+        ContainerControlView startContainerControlView = new ContainerControlView();
+        startContainerControlView.displayContainerControl();
     }
     
 }
