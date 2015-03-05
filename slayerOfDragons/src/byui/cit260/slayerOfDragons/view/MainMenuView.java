@@ -13,9 +13,10 @@ import slayerofdragons.SlayerOfDragons;
  *
  * @author trevoralbrethsen
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    private final String MENU = "\n"
+    public MainMenuView() {
+        super("\n"
             + "\n--------------------------------------------"
             + "\n| Main Menu                                |"
             + "\n--------------------------------------------"
@@ -25,49 +26,18 @@ public class MainMenuView {
             + "\nS - Save game"
             + "\nE - Exit"
             + "\nC - ContainerControlView"
-            + "\n--------------------------------------------";
-
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first character of string
-            
-            this.doAction(selection); // do action based on selection
-        
-        } while (selection != 'E'); // a selection is not "Exit"
+            + "\n--------------------------------------------");
     }
-
-    public String getInput() {
-        boolean valid = false; // indicates if the input has been retrieved
-        String input = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+    
+    @Override
+    public boolean doAction(Object obj){
         
-        while(!valid) { // while a valid name has not been retrieved
-            
-            //prompt for the input
-            System.out.println("Enter the input below:");
-            
-            //get the name from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
-            input = input.trim();
-            
-            // if the input is invalid (less than one character in length))
-            if (input.length() < 1) {
-                System.out.println("Invalid input - the input must not be blank");
-                continue; // and repeat again
-                
-            }
-            break; // out of the (exit) the repetition
-        }
+        String value = (String) obj;
         
-        return input; // return the input
-    }
-
-    public void doAction(char choice) {
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); //get first character entered
+        
+        
         
         switch (choice) {
             case 'N': // create and start a new game
@@ -85,13 +55,14 @@ public class MainMenuView {
             case 'C': // Access ContainerControlView
                 this.accessContainer();
                 break;
-            case 'E': // Exit the game
-                return;
+            case 'Q': // Exit the game
+                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
-    }
+        return false;
+       }
 
     private void startNewGame() {
                 // create a new game
@@ -105,7 +76,7 @@ public class MainMenuView {
     private void startExistingGame() {
         //System.out.println("*** startExistingGame function called ***");
         StartExistingGameView startExistingGameMenu = new StartExistingGameView();
-        startExistingGameMenu.displayStartExistingGameMenu();
+        startExistingGameMenu.display();
     }
 
     private void saveGame() {
@@ -119,7 +90,7 @@ public class MainMenuView {
                 // access help menu
         // HelpMenuView 
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenu();
+        helpMenu.display();
     }
 
     private void accessContainer() {
