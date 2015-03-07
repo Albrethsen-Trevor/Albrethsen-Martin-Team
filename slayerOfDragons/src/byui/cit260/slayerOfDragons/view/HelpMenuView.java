@@ -75,7 +75,10 @@ public class HelpMenuView extends View{
     }
 
     private void harvestingResources() {
-        System.out.println("*** harvestingResources function called ***");
+        // System.out.println("*** harvestingResources function called ***");
+        
+        HarvestingResourcesView harvestingResources = new HarvestingResourcesView();
+        harvestingResources.display();
     }
 
     private void deliverResourcesToShop() {
