@@ -21,6 +21,13 @@ public class Horse implements Serializable{
     private double maxCapacity;
 
     public Horse() {
+        this.description = "\nThis is the horse of Slayer of Dragons! If you"
+                        + "\nride the horse to victory, you will win the game";
+        this.name = 0;
+        this.width = 0;
+        this.height = 0;
+        this.length = 0;
+        this.maxWeighCapacity = 0;
     }
 
     public String getName() {

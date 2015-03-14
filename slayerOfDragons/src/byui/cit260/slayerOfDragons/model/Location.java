@@ -14,8 +14,11 @@ import java.util.Objects;
  */
 public class Location implements Serializable {
     
-    //class instance variables
-    private String coordinates;
+    private int row;
+    private int column;
+    private boolean visited;
+    private Scene scene;
+    private ArrayList<Actor> actors;
 
     public Location() {
     }

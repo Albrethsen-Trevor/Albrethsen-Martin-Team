@@ -15,7 +15,12 @@ import java.util.Objects;
 public class Game implements Serializable{
     
     private String Game;
-
+    private Horse horse;
+    private InventoryItem[] inventory;
+    private Player player;
+    private String[] actors;
+    private Map map;
+    
     public Game() {
     }
     
@@ -27,6 +32,48 @@ public class Game implements Serializable{
         this.Game = Game;
     }
 
+    public Horse getHorse() {
+        return horse;
+    }
+
+    public void setHorse(Horse horse) {
+        this.horse = horse;
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Game{" + "Game=" + Game + '}';
