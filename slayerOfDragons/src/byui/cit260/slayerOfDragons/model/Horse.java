@@ -14,52 +14,53 @@ import java.util.Objects;
  */
 public class Horse implements Serializable{
     
-    private String Name;
-    private String Width;
-    private String Height;
-    private String Length;
+    private String description;
+    private String name;
+    private double width;
+    private double height;
+    private double length;
     private double maxCapacity;
 
     public Horse() {
         this.description = "\nThis is the horse of Slayer of Dragons! If you"
                         + "\nride the horse to victory, you will win the game";
-        this.name = 0;
+        this.name = null;
         this.width = 0;
         this.height = 0;
         this.length = 0;
-        this.maxWeighCapacity = 0;
+        this.maxCapacity = 0;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = name;
     }
 
-    public String getWidth() {
-        return Width;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWidth(String Width) {
-        this.Width = Width;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
-    public String getHeight() {
-        return Height;
+    public double getHeight() {
+        return height;
     }
 
-    public void setHeight(String Height) {
-        this.Height = Height;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
-    public String getLength() {
-        return Length;
+    public double getLength() {
+        return length;
     }
 
-    public void setLength(String Length) {
-        this.Length = Length;
+    public void setLength(double length) {
+        this.length = length;
     }
 
     public double getMaxCapacity() {
@@ -72,16 +73,16 @@ public class Horse implements Serializable{
 
     @Override
     public String toString() {
-        return "Horse{" + "Name=" + Name + ", Width=" + Width + ", Height=" + Height + ", Length=" + Length + ", maxCapacity=" + maxCapacity + '}';
+        return "Horse{" + "name=" + name + ", width=" + width + ", height=" + height + ", length=" + length + ", maxCapacity=" + maxCapacity + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.Name);
-        hash = 59 * hash + Objects.hashCode(this.Width);
-        hash = 59 * hash + Objects.hashCode(this.Height);
-        hash = 59 * hash + Objects.hashCode(this.Length);
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.width);
+        hash = 59 * hash + Objects.hashCode(this.height);
+        hash = 59 * hash + Objects.hashCode(this.length);
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.maxCapacity) ^ (Double.doubleToLongBits(this.maxCapacity) >>> 32));
         return hash;
     }
@@ -95,16 +96,16 @@ public class Horse implements Serializable{
             return false;
         }
         final Horse other = (Horse) obj;
-        if (!Objects.equals(this.Name, other.Name)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.Width, other.Width)) {
+        if (!Objects.equals(this.width, other.width)) {
             return false;
         }
-        if (!Objects.equals(this.Height, other.Height)) {
+        if (!Objects.equals(this.height, other.height)) {
             return false;
         }
-        if (!Objects.equals(this.Length, other.Length)) {
+        if (!Objects.equals(this.length, other.length)) {
             return false;
         }
         if (Double.doubleToLongBits(this.maxCapacity) != Double.doubleToLongBits(other.maxCapacity)) {

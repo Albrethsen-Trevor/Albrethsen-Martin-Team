@@ -37,6 +37,10 @@ public class GameMenuView {
         }
     }
     
+        private void displayMap() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     private void viewInventory() {
         // get the sorted list of inventory items for the current game
         InventoryItem[] inventory = GameContorl.getSortedInventoryList();
@@ -53,6 +57,14 @@ public class GameMenuView {
                                inventoryItem.getRequiredAmount() + "\t     " +
                                inventoryItem.getQuantityInStock());
         }
+    }
+
+    private void viewActors() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void viewHorseStatus() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

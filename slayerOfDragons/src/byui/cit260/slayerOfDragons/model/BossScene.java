@@ -15,13 +15,34 @@ import java.util.Objects;
 public class BossScene implements Serializable{
     
     //class instance variable
-    private String type;
+    
     private String description;
+    private String type;
     private String symbol;
     private double travelTime;
+    private double bossMaxHealth;
 
     public BossScene() {
+        this.description = "\nThis is the dragon that the average joe must defeat."
+                        + "\nKill the dragon and you win the game!";
+        this.type = null;
+        this.symbol = null;
+        this.travelTime = 120.0;
+        this.bossMaxHealth = (double)bossMaxHealth.getHealth();
     }
+    
+    public BossHealthMax(health) {
+        // call starting health points of boss
+        double volume = GameControl.calcBossTotalHealth(health);
+        // if the health is valid
+        maxValue = health;
+        for index = 1 TO  health.index -1
+                if  (health[index]) > maxValue);
+                    maxValue = list[index];
+                if else
+                    maxValue = -1;
+                for index = -1;
+    } return maxValue;
 
     public String getType() {
         return type;
