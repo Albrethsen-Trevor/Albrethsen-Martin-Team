@@ -5,6 +5,8 @@
  */
 package byui.cit260.slayerOfDragons.control;
 
+import java.util.Arrays;
+
 /**
  *
  * @author ianmartin
@@ -29,6 +31,17 @@ public class InventoryControl {
 
         return volume;
 
+    }
+
+    
+    public static void InventoryItem(String args[]) {
+        
+        String[] items = new String[]{"enter", "variables"," here"}; //Just place holders until actual items are made.
+        Arrays.sort(items);
+        
+        for (int i=0; i < items.length;i++) {
+            System.out.println(items);
+        }
     }
     
 }
