@@ -24,7 +24,7 @@ public class SlayerOfDragons {
     private static Game currentGame = null;
     private static Player player = null;
     public static Player getPlayer;
-
+    
     public static Game getCurrentGame() {
         return currentGame;
     }
@@ -44,7 +44,13 @@ public class SlayerOfDragons {
     public static void main(String[] args) {
         // create StartProgramView and start the program
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.startProgram();
+        try {
+            startProgramView.startProgram();
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.displayBanner();
+        }
     }
     
     

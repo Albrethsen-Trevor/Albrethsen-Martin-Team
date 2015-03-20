@@ -5,20 +5,23 @@
  */
 package byui.cit260.slayerOfDragons.control;
 
+import byui.cit260.slayerOfDragons.exceptions.VolumeOfPurseException;
+
 /**
  *
  * @author ianmartin
  */
 public class VolumeOfPurse {
     
-    public double calcVolumeOfPurse(double height, double diameter) {
+    public double calcVolumeOfPurse(double height, double diameter) 
+                        throws VolumeOfPurseException {
         
         if (height < 0) { //Is the height negative?
-            return -1;
+            throw new VolumeOfPurseException("Height can't be less than 0.");
         }
 
         if (diameter < 0 || diameter > 24) { //Width is negative?
-            return -1;
+            throw new VolumeOfPurseException("Diameter can't be less than 0 or higher than 24.");
         }
 
         double radius = diameter / 2;
