@@ -5,48 +5,18 @@
  */
 package byui.cit260.slayerOfDragons.model;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 /**
  *
  * @author trevoralbrethsen
  */
-public class ShopScene implements Serializable{
+public class ShopScene extends Scene{
     
     //class instance variable;
-    private String type;
-    private String description;
-    private String symbol;
     private double capacity;
 
     public ShopScene() {
-    }
-    
-    
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+        
+        
     }
 
     public double getCapacity() {
@@ -59,16 +29,13 @@ public class ShopScene implements Serializable{
 
     @Override
     public String toString() {
-        return "ShopScene{" + "type=" + type + ", description=" + description + ", symbol=" + symbol + ", capacity=" + capacity + '}';
+        return "ShopScene{" + "capacity=" + capacity + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.type);
-        hash = 17 * hash + Objects.hashCode(this.description);
-        hash = 17 * hash + Objects.hashCode(this.symbol);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.capacity) ^ (Double.doubleToLongBits(this.capacity) >>> 32));
+        int hash = 3;
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.capacity) ^ (Double.doubleToLongBits(this.capacity) >>> 32));
         return hash;
     }
 
@@ -81,20 +48,16 @@ public class ShopScene implements Serializable{
             return false;
         }
         final ShopScene other = (ShopScene) obj;
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.symbol, other.symbol)) {
-            return false;
-        }
         if (Double.doubleToLongBits(this.capacity) != Double.doubleToLongBits(other.capacity)) {
             return false;
         }
         return true;
     }
+    
+    
+
+    
+    
     
     
     

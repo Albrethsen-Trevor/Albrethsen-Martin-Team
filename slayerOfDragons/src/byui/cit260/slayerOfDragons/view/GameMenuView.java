@@ -5,6 +5,9 @@
  */
 package byui.cit260.slayerOfDragons.view;
 
+import byui.cit260.slayerOfDragons.control.GameControl;
+import byui.cit260.slayerOfDragons.model.InventoryItem;
+
 /**
  *
  * @author trevoralbrethsen
@@ -43,7 +46,7 @@ public class GameMenuView {
     
     private void viewInventory() {
         // get the sorted list of inventory items for the current game
-        InventoryItem[] inventory = GameContorl.getSortedInventoryList();
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
         System.out.println("\nList of Inventory Items");
         System.out.println("Description" + "\t" +
@@ -53,7 +56,7 @@ public class GameMenuView {
         // for each inventory item
         for (InventoryItem inventoryItem : inventory) {
             // DISPLAY the description, the required amount and amount in stock
-            System.out.println(inventoryItem.getDescription() + "\t     " +
+            System.out.println(inventoryItem.getInventoryType() + "\t     " +
                                inventoryItem.getRequiredAmount() + "\t     " +
                                inventoryItem.getQuantityInStock());
         }

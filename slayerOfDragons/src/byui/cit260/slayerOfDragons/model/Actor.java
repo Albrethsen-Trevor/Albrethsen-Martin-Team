@@ -5,6 +5,7 @@
  */
 package byui.cit260.slayerOfDragons.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 
 /**

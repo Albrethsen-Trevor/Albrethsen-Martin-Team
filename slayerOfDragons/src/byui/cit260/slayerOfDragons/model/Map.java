@@ -14,8 +14,8 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
     
-    private int noOfRows;
-    private int noOfColumns;
+    private int rowCount;
+    private int columnCount;
     private Location[][] locations;
 
     public Map() {
@@ -28,8 +28,8 @@ public class Map implements Serializable{
             return;
         }
         
-        this.noOfRows = noOfRows;
-        this.noOfColumns = noOfColumns;
+        this.rowCount = noOfRows;
+        this.columnCount = noOfColumns;
         
         // create 2-D array for Location objects
         this.locations = new Location[noOfRows][noOfColumns];
@@ -47,33 +47,49 @@ public class Map implements Serializable{
             }
         }
     }
+
+    public int getColumnCount() {
+        return columnCount;
+    }
+
+    public void setColumnCount(int columnCount) {
+        this.columnCount = columnCount;
+    }
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
     
-    public String getRowCount() {
+    public int getRowCount() {
         return rowCount;
     }
 
-    public void setRowCount(String rowCount) {
+    public void setRowCount(int rowCount) {
         this.rowCount = rowCount;
     }
 
-    public double getCoulumnCount() {
-        return coulumnCount;
+    public int getCoulumnCount() {
+        return columnCount;
     }
 
-    public void setCoulumnCount(double coulumnCount) {
-        this.coulumnCount = coulumnCount;
+    public void setCoulumnCount(int coulumnCount) {
+        this.columnCount = coulumnCount;
     }
 
     @Override
     public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", coulumnCount=" + coulumnCount + '}';
+        return "Map{" + "rowCount=" + rowCount + ", coulumnCount=" + columnCount + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.rowCount);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.coulumnCount) ^ (Double.doubleToLongBits(this.coulumnCount) >>> 32));
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
         return hash;
     }
 
@@ -89,7 +105,7 @@ public class Map implements Serializable{
         if (!Objects.equals(this.rowCount, other.rowCount)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.coulumnCount) != Double.doubleToLongBits(other.coulumnCount)) {
+        if (Double.doubleToLongBits(this.columnCount) != Double.doubleToLongBits(other.columnCount)) {
             return false;
         }
         return true;

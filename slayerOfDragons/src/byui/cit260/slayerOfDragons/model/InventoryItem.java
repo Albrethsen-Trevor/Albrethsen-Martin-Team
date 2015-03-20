@@ -15,7 +15,7 @@ import java.util.Objects;
 public class InventoryItem implements Serializable{
     
     private String inventoryType;
-    private String quantityInStock;
+    private int quantityInStock;
     private double requiredAmount;
 
     public InventoryItem() {
@@ -29,11 +29,11 @@ public class InventoryItem implements Serializable{
         this.inventoryType = inventoryType;
     }
 
-    public String getQuantityInStock() {
+    public int getQuantityInStock() {
         return quantityInStock;
     }
 
-    public void setQuantityInStock(String quantityInStock) {
+    public void setQuantityInStock(int quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
 

@@ -6,6 +6,7 @@
 package byui.cit260.slayerOfDragons.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -22,25 +23,60 @@ public class Location implements Serializable {
 
     public Location() {
     }
-    
-    
-    public String getCoordinates() {
-        return coordinates;
+
+    public int getRow() {
+        return row;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "coordinates=" + coordinates + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scene + ", actors=" + actors + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.coordinates);
+        int hash = 5;
+        hash = 29 * hash + this.row;
+        hash = 29 * hash + this.column;
+        hash = 29 * hash + (this.visited ? 1 : 0);
+        hash = 29 * hash + Objects.hashCode(this.scene);
+        hash = 29 * hash + Objects.hashCode(this.actors);
         return hash;
     }
 
@@ -53,11 +89,29 @@ public class Location implements Serializable {
             return false;
         }
         final Location other = (Location) obj;
-        if (!Objects.equals(this.coordinates, other.coordinates)) {
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        if (this.visited != other.visited) {
+            return false;
+        }
+        if (!Objects.equals(this.scene, other.scene)) {
+            return false;
+        }
+        if (!Objects.equals(this.actors, other.actors)) {
             return false;
         }
         return true;
     }
+
+    
+    
+    
+    
+    
     
     
     
