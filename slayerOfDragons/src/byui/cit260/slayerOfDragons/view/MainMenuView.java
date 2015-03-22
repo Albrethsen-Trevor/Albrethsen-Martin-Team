@@ -6,7 +6,10 @@
 package byui.cit260.slayerOfDragons.view;
 
 import byui.cit260.slayerOfDragons.control.GameControl;
+import byui.cit260.slayerOfDragons.exceptions.InventoryControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import slayerofdragons.SlayerOfDragons;
 
 /**
@@ -52,8 +55,14 @@ public class MainMenuView extends View {
             case 'S': // save the current game
                 this.saveGame();
                 break;
-            case 'C': // Access ContainerControlView
+            case 'C': {
+            try {
+                // Access ContainerControlView
                 this.accessContainer();
+            } catch (InventoryControlException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'Q': // Exit the game
                 
@@ -93,7 +102,7 @@ public class MainMenuView extends View {
         helpMenu.display();
     }
 
-    private void accessContainer() {
+    private void accessContainer() throws InventoryControlException {
         ContainerControlView startContainerControlView = new ContainerControlView();
         startContainerControlView.displayContainerControl();
     }

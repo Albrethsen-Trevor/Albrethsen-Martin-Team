@@ -5,6 +5,7 @@
  */
 package byui.cit260.slayerOfDragons.control;
 
+import byui.cit260.slayerOfDragons.exceptions.InventoryControlException;
 import java.util.Arrays;
 
 /**
@@ -13,18 +14,22 @@ import java.util.Arrays;
  */
 public class InventoryControl {
     
-    public static double calcVolumeOfItemContainer(double height, double width, double length) {
+    public static double calcVolumeOfItemContainer(double height, double width, double length) 
+                                throws InventoryControlException {
 
         if (height < 0 || height > 24) { //Is the height negative?
-            return -1;
+            throw new InventoryControlException("Height cannot be less than 0"
+                                              + " or greater than 24.");
         }
 
         if (width < 0 || width > 24) { //Width is negative?
-            return -2;
+            throw new InventoryControlException("Width cannot be less than 0"
+                                              + " or greater than 24.");
         }
 
         if (length < 0 || length > 24) { //Length too high?
-            return -3;
+            throw new InventoryControlException("Length cannot be less than 0"
+                                              + " or greater than 24.");
         }
 
         double volume = (height * width * length) / 1728;

@@ -6,6 +6,7 @@
 package byui.cit260.slayerOfDragons.view;
 
 import byui.cit260.slayerOfDragons.control.InventoryControl;
+import byui.cit260.slayerOfDragons.exceptions.InventoryControlException;
 import byui.cit260.slayerOfDragons.model.Container;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class ContainerControlView {
             + "\n Enter the height of the container"
             + "\n--------------------------------------------";
 
-    public void displayContainerControl() {
+    public void displayContainerControl() throws InventoryControlException {
         
         double volume = -1;
         do {
@@ -78,7 +79,7 @@ public class ContainerControlView {
         return input; // return the input
     }
     
-    public double doAction(double width, double height, double length) {
+    public double doAction(double width, double height, double length) throws InventoryControlException {
         
         // call control function to calculate the volume
         double volume = InventoryControl.calcVolumeOfItemContainer(height, width, length);
