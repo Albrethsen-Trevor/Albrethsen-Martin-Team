@@ -44,6 +44,8 @@ public class StartExistingGameView extends View{
                 this.copySaveFile();
                 break;
             case 'Q': // Quit the help menu
+                System.out.println("Quit was run");
+                break;
                 
             default:
                 System.out.println("\n*** Invalid selection *** Try again");

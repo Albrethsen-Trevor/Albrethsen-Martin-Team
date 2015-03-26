@@ -33,11 +33,11 @@ public class MapControl {
     }
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("assignScenesToLocations was called");
     }
 
     static void moveActorsToStartingLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("moveActorsToLocations was called");
     }
     
     public enum SceneType {
