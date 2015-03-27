@@ -8,13 +8,19 @@ package byui.cit260.slayerOfDragons.view;
 import byui.cit260.slayerOfDragons.control.InventoryControl;
 import byui.cit260.slayerOfDragons.exceptions.InventoryControlException;
 import byui.cit260.slayerOfDragons.model.Container;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import slayerofdragons.SlayerOfDragons;
 
 /**
  *
  * @author trevoralbrethsen
  */
 public class ContainerControlView {
+    
+    protected final BufferedReader keyboard = SlayerOfDragons.getInFile();
+    protected final PrintWriter console = SlayerOfDragons.getOutFile();
     
     private final String CONTAINERCONTROL = "\n"
             + "\n--------------------------------------------"
@@ -56,24 +62,30 @@ public class ContainerControlView {
     public String getInput() {
         boolean valid = false; // indicates if the input has been retrieved
         String input = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
+        try{
         while(!valid) { // while a valid name has not been retrieved
             
             //prompt for the input
             System.out.println("Enter the input below:");
             
             //get the name from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
+            input = this.keyboard.readLine();
             input = input.trim();
             
             // if the input is invalid (less than one character in length))
             if (input.length() < 1) {
-                System.out.println("Invalid input - the input must not be blank");
+                ErrorView.display(this.getClass().getName(),
+                                    "Invalid input - the input must not be blank");
                 continue; // and repeat again
                 
             }
             break; // out of the (exit) the repetition
+        }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                                "Error reading input: " + e.getMessage());
+            return null;
         }
         
         return input; // return the input

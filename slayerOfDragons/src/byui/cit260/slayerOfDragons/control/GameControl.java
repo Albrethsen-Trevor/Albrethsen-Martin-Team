@@ -11,6 +11,12 @@ import byui.cit260.slayerOfDragons.model.Horse;
 import byui.cit260.slayerOfDragons.model.InventoryItem;
 import byui.cit260.slayerOfDragons.model.Map;
 import byui.cit260.slayerOfDragons.model.Player;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import slayerofdragons.SlayerOfDragons;
 
 /**
@@ -40,6 +46,39 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
+    public static void saveGame(Game currentGame, String filepath)
+            throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame); // write the game object out to file
+
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    
+    public static void getSavedGame(String filepath)
+                        throws GameControlException {
+        Game currentGame = null;
+        
+        try( FileInputStream fips = new FileInputStream(filepath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            currentGame = (Game) output.readObject(); // read the game object from file
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        // close the output file
+        SlayerOfDragons.setCurrentGame(currentGame); // save in SlayerOfDragons
+    }
     
     
     public enum Item {

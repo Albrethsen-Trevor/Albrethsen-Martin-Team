@@ -55,15 +55,6 @@ public class MainMenuView extends View {
             case 'S': // save the current game
                 this.saveGame();
                 break;
-            case 'C': {
-            try {
-                // Access ContainerControlView
-                this.accessContainer();
-            } catch (InventoryControlException ex) {
-                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
             case 'Q': // Exit the game
                 
             default:
@@ -83,13 +74,37 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        //System.out.println("*** startExistingGame function called ***");
-        StartExistingGameView startExistingGameMenu = new StartExistingGameView();
-        startExistingGameMenu.display();
+        
+        // prompt for and get the name of the file to save the game in
+        System.out.println("\n\nEnter the file path for the file where the game"
+                           + "is to be saved");
+        
+        String filePath = this.getInput();
+        
+        try {
+            // start game saved game
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
     }
 
     private void saveGame() {
-        System.out.println("*** startExistingGame function called ***");
+        // prompt for and get the name of the file to save the game in
+        System.out.println("\n\nEnter the file path for file where the game"
+                           + "is to be saved");
+        String filePath = this.getInput();
+        
+        try {
+            // save the game to the specified file
+            GameControl.saveGame(SlayerOfDragons.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
         
     }
 

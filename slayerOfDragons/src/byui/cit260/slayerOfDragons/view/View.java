@@ -5,7 +5,10 @@
  */
 package byui.cit260.slayerOfDragons.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import slayerofdragons.SlayerOfDragons;
 
 /**
  *
@@ -14,6 +17,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = SlayerOfDragons.getInFile();
+    protected final PrintWriter console = SlayerOfDragons.getOutFile();
     
     public View(String promptMessage){
         this.promptMessage = promptMessage;
@@ -24,7 +30,7 @@ public abstract class View implements ViewInterface {
         String value;
         
         do {
-            System.out.println(this.promptMessage); // display the main menu
+            this.console.println(this.promptMessage); // display the main menu
             value = this.getInput(); // get the user's selection
             this.doAction(value); // do action based on selection
         
@@ -34,18 +40,18 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput() {
         
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+
         boolean valid = false; // indicates if the input has been retrieved
         String input = null;
-       
-        
+        try{
+
         while(!valid) { // while a valid name has not been retrieved
             
             //prompt for the input
             System.out.println("Enter the input below:");
             
             //get the name from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
+            input = this.keyboard.readLine();
             input = input.trim();
             
             // if the input is invalid (less than one character in length))
@@ -55,6 +61,10 @@ public abstract class View implements ViewInterface {
                 
             }
             break; // out of the (exit) the repetition
+        }
+        
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
         }
         
         return input; // return the input
