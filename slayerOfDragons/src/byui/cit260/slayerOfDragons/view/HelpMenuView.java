@@ -56,13 +56,15 @@ public class HelpMenuView extends View{
             case 'Q': // Quit the help menu
                 
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                ErrorView.display("HelpMenuView",
+                                   "*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
     private void goalOfTheGame() {
+        // prompt for and get the name of the file to show goal of the game in
         System.out.println("*** goalOfTheGame function called ***");
     }
 

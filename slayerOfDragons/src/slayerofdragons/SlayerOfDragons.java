@@ -74,6 +74,13 @@ public class SlayerOfDragons {
         // create StartProgramView and start the program
         StartProgramView startProgramView = new StartProgramView();
         try {
+            SlayerOfDragons.inFile = new BufferedReader(new InputStreamReader(System.in));
+            SlayerOfDragons.outFile = new PrintWriter(System.out, true);
+
+            //open log file
+             String filePath = "logfile.txt";
+
+            SlayerOfDragons.logFile = new PrintWriter(filePath);
             startProgramView.startProgram();
         } catch (Throwable te) {
             System.out.println(te.getMessage());

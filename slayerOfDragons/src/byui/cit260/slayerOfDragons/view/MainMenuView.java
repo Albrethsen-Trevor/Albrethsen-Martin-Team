@@ -58,7 +58,8 @@ public class MainMenuView extends View {
             case 'Q': // Exit the game
                 
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                ErrorView.display("MainMenuView",
+                                  "*** Invalid selection *** Try again");
                 break;
         }
         return false;
