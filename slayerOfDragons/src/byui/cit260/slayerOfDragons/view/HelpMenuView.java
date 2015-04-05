@@ -51,7 +51,7 @@ public class HelpMenuView extends View{
                 this.harvestingResources();
                 break;
             case 'D': // deliver resources to shop
-                this.deliverResourcesToShop();
+                this.deliveryOfResourcesToShop();
                 break;
             case 'Q': // Quit the help menu
                 
@@ -65,15 +65,18 @@ public class HelpMenuView extends View{
 
     private void goalOfTheGame() {
         // prompt for and get the name of the file to show goal of the game in
-        System.out.println("*** goalOfTheGame function called ***");
+        GoalOfTheGameView goalOfTheGame = new GoalOfTheGameView();
+        goalOfTheGame.display();
     }
 
     private void howToMove() {
-        System.out.println("*** howToMove function called ***");
+        HowToMoveView howToMove = new HowToMoveView();
+        howToMove.display();
     }
 
     private void amountOfResources() {
-        System.out.println("*** amountOfResources function called ***");
+        AmountOfResourcesView amountOfResources = new AmountOfResourcesView();
+        amountOfResources.display();
     }
 
     private void harvestingResources() {
@@ -83,8 +86,9 @@ public class HelpMenuView extends View{
         harvestingResources.display();
     }
 
-    private void deliverResourcesToShop() {
-        System.out.println("*** deliverResourceToShop function called ***");
+    private void deliveryOfResourcesToShop() {
+        DeliveryOfResourcesToShopView deliveryOfResourcesToShop = new DeliveryOfResourcesToShopView();
+        deliveryOfResourcesToShop.display();
     }
     
 }
