@@ -84,7 +84,6 @@ public class SlayerOfDragons {
             startProgramView.startProgram();
         } catch (Throwable te) {
             System.out.println(te.getMessage());
-            te.printStackTrace();
             startProgramView.displayBanner();
         }
         
@@ -110,7 +109,7 @@ public class SlayerOfDragons {
                                "\nCause: " + e.getCause() +
                                "\nMessage: " + e.getMessage());
             
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         
         finally {

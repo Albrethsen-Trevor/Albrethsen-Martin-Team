@@ -9,7 +9,6 @@ import byui.cit260.slayerOfDragons.control.ProgramControl;
 import byui.cit260.slayerOfDragons.model.Player;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import slayerofdragons.SlayerOfDragons;
 
 /**
